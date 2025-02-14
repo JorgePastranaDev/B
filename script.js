@@ -1,5 +1,5 @@
 let noButtonDodgeCount = 0;
-const maxDodges = 5;
+const maxDodges = 2;
 
 function nextQuestion(accepted, questionNumber) {
     if (accepted) {
@@ -14,6 +14,7 @@ function nextQuestion(accepted, questionNumber) {
 }
 
 function handleNo() {
+    noButtonDodgeCount++;
     if (noButtonDodgeCount >= maxDodges) {
         document.querySelectorAll('.question').forEach(q => q.classList.remove('active'));
         document.querySelector('#rejected').classList.add('active');
@@ -26,7 +27,6 @@ function dodgeNo() {
     if (noButtonDodgeCount < maxDodges) {
         const btn = document.querySelector('.btn.no');
         btn.style.transform = `translate(${Math.random() * 200 - 100}px, ${Math.random() * 100 - 50}px)`;
-        noButtonDodgeCount++;
     }
 }
 
